@@ -81,7 +81,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("\nAverage Results over {} trials:", num_trials);
     println!("Average rainbow table creation time: {:.4} seconds", avg_creation_time);
     println!("Average table size: {:.0} entries", avg_table_size);
-    println!("Average Performance: {} seconds per entry", avg_creation_time / avg_table_size);
+    println!("Average Performance: {:.9} seconds per entry", avg_creation_time / avg_table_size);
 
     Ok(())
 }
