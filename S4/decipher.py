@@ -27,11 +27,8 @@ def create_pattern(substitution_pattern):
 def find_matching_words(substitution_pattern):
     pattern = create_pattern(substitution_pattern)
     regex_pattern = re.compile(f'^{pattern.replace("*", ".")}$')
-    return sorted(
-        (word for word in nltk_words if regex_pattern.fullmatch(word)),
-        key=lambda x: word_freq[x],
-        reverse=True,
-    )
+    matching_words = (word for word in nltk_words if regex_pattern.fullmatch(word))
+    return sorted(matching_words, key=lambda x: word_freq[x], reverse=True)
 
 
 @lru_cache(maxsize=1000)
@@ -55,7 +52,7 @@ def evaluate_decryption(decrypted_message):
     return bigram_score, english_word_ratio, char_score
 
 
-def solve_vigenere(text):
+def solver(text):
     chunks = sorted(set(text.replace(".", "").split(" ")), key=len, reverse=True)
 
     def iterate_subs(chunk, index, mapping):
@@ -120,5 +117,5 @@ def solve_vigenere(text):
 
 
 cipher = "PRCSOFQX FP QDR AFOPQ CZSPR LA JFPALOQSKR. QDFP FP ZK LIU BROJZK MOLTROE."
-result = solve_vigenere(cipher)
+result = solver(cipher)
 print("Decrypted message:", result)
