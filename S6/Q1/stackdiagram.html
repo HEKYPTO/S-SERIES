@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Layout Diagram</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .stack-container {
+            border: 2px solid #333;
+            margin-top: 20px;
+        }
+        .stack-header, .stack-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .stack-header {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .address, .content, .description {
+            flex: 1;
+            padding: 0 5px;
+        }
+        .address, .content {
+            font-family: monospace;
+        }
+        .address {
+            color: #666;
+        }
+        .content {
+            color: #0066cc;
+        }
+        .highlight {
+            background-color: #fffacd;
+        }
+        @media (max-width: 600px) {
+            .stack-header, .stack-item {
+                flex-direction: column;
+            }
+            .address, .content, .description {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Stack Layout Diagram</h1>
+    <div class="stack-container">
+        <div class="stack-header">
+            <span class="address">Address</span>
+            <span class="content">Content</span>
+            <span class="description">Description</span>
+        </div>
+        <div class="stack-item">
+            <span class="address">0x00007ffd1cd30360</span>
+            <span class="content">0x0000000c</span>
+            <span class="description">Argument i</span>
+        </div>
+        <div class="stack-item highlight">
+            <span class="address">0x00007ffd1cd30358</span>
+            <span class="content">0x000055fd61a541c1</span>
+            <span class="description">Return Address</span>
+        </div>
+        <div class="stack-item">
+            <span class="address">0x00007ffd1cd30350</span>
+            <span class="content">0x00007ffd1cd30390</span>
+            <span class="description">Saved Base Pointer</span>
+        </div>
+        <div class="stack-item highlight">
+            <span class="address">0x00007ffd1cd30348</span>
+            <span class="content">0x3837363534333231</span>
+            <span class="description">buf[0-7]</span>
+        </div>
+        <div class="stack-item">
+            <span class="address">0x00007ffd1cd30340</span>
+            <span class="content">0x3635343332313039</span>
+            <span class="description">buf[8-15]</span>
+        </div>
+        <div class="stack-item">
+            <span class="address">0x00007ffd1cd30338</span>
+            <span class="content">0x0038373635343332</span>
+            <span class="description">buf[16-19] + padding</span>
+        </div>
+    </div>
+</body>
+</html>
